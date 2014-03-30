@@ -149,11 +149,11 @@ RAC(self.submitButton, enabled) = [RACSignal
 
 ---
 
-> Boom!
+![fit](Typical Example.png)
 
 ---
 
-> Everyday __*ReactiveCocoa*__ Code Examples
+> Boom!
 
 ---
 
@@ -163,7 +163,13 @@ RAC(self.submitButton, enabled) = [RACSignal
 
 ---
 
-# RACSignal is the king!
+# Signals (RACSignal) is the key!
+
+## Build the Pineline
+
+---
+
+> Everyday __*ReactiveCocoa*__ Code Examples
 
 ---
 
