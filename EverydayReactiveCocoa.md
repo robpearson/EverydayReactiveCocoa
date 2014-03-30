@@ -99,7 +99,8 @@
 * GPS location changes
 * Data from webservices
 * Images from webservices
-* ...
+
+...
 
 ---
 
@@ -109,19 +110,24 @@
 * Sounds 
 * Persist data somewhere
 * Push data to the cloud
-* ...
+
+...
 
 ---
 
-# Standard Programming vs. Reactive Programming
+# Conventional Programming vs. Reactive Programming
 
-## Event Handlers, Delegates, KVO etc. vs. Descriptive Expressions to Handle Events
+## Event Handlers, Delegates, KVO vs. Descriptive Expressions to Handle Events
+
+^ Talk about how reactive programming is declarative and expressive.  It involves writing description expressions that handle events.
 
 --- 
 
 ![fit](Pipeline.png)
 
 ^ Talk about signal "pipeline" and how events are added over time.  The program reacts to handle the new inputs/events.  
+
+^ NOTE: Pipeline is my term.  It's pretty standard but make sure people understand it's not a RAC/Reactive thing.
 
 ---
 
@@ -158,6 +164,8 @@ RAC(self.submitButton, enabled) = [RACSignal
     }];
 ```
 
+##### Josh Abernathy - http://blog.maybeapps.com/post/42894317939/input-and-output
+
 ----
 
 ![fit](Typical Example.png)
@@ -170,7 +178,7 @@ RAC(self.submitButton, enabled) = [RACSignal
 
 # Why is FRP better?  
 
-* Minimal App State
+* Minimal App State 
 * Declarative
 * Expressive
 * Different ... 
@@ -181,7 +189,7 @@ RAC(self.submitButton, enabled) = [RACSignal
 
 ## Reactive Functional Programming framework by Github
 
-^ OK, let's talk about 
+^ OK, let's talk about ReactiveCocoa.
 
 ---
 
@@ -191,7 +199,7 @@ RAC(self.submitButton, enabled) = [RACSignal
 
 ---
 
-> Everyday __*ReactiveCocoa*__ Code Examples
+> Everyday ReactiveCocoa Code Examples
 
 ---
 
