@@ -121,9 +121,11 @@
 
 ![fit](Pipeline.png)
 
+^ Talk about signal "pipeline" and how events are added over time.  The program reacts to handle the new inputs/events.  
+
 ---
 
-# Reacting to Signals through subscription
+# Reacting to Signals via subscriptions
 
 ```objectivec
 [signal subscribeNext:^(id value) {
@@ -135,20 +137,11 @@
 }];
 ```
 
-##### https://github.com/kastiglione/ExpressiveReactiveCocoa
+^ So we have a signal, how do we react to its changes.
 
 --- 
 
-# Why is FRP better?  
-
-* Minimal App State
-* Declarative
-* Expressive
-* Different ... 
-
---- 
-
-# Expressiveness
+# Hello World
 
 Typical example, a sign-up form:
 
@@ -165,8 +158,6 @@ RAC(self.submitButton, enabled) = [RACSignal
     }];
 ```
 
-##### https://github.com/kastiglione/ExpressiveReactiveCocoa
-
 ----
 
 ![fit](Typical Example.png)
@@ -177,9 +168,20 @@ RAC(self.submitButton, enabled) = [RACSignal
 
 ---
 
+# Why is FRP better?  
+
+* Minimal App State
+* Declarative
+* Expressive
+* Different ... 
+
+---
+
 # ReactiveCocoa
 
 ## Reactive Functional Programming framework by Github
+
+^ OK, let's talk about 
 
 ---
 
@@ -259,6 +261,8 @@ RAC(self.submitButton, enabled) = [RACSignal
 ---
 
 # RAC macro for binding a signal to a property
+
+
 
 ---
 
@@ -350,19 +354,19 @@ MCSimpleTableCell *everydayTransitTripCell = [[MCSimpleTableCell alloc] init];
 
 # Real Power is combing and chaining signals
 
-# Build the Pipeline
+# Build the Pipeline - Demo
 
 ---
 
-### Transit Dashboard.
+### Simple Transit Dashboard
+
 Inputs
-* Transit Time table for the day
+* Transit Service Times
 * Location Updates
 * Time Updates
 
 Output
 * Next Transit Service based on time/location
-* Future Transit Services based on time/location
 
 ---
 
@@ -373,6 +377,7 @@ Output
 # Protips
 
 * Start by reading IntroToRx.com
+* Start small and build.
 * Asks questions by opening issues at http://github.com/ReactiveCocoa/
 
 ---
@@ -381,8 +386,8 @@ Output
 
 * ReactiveCocoa Doco
 * Thinking like a Functional Programmer
-* Unit Testing
 * Debugging
+* Unit Testing
 
 ---
 
