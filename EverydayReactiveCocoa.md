@@ -8,60 +8,74 @@
 
 ## Everyday Transit coming soon.
 
----
-
-# Thoughts and Experience using ReactiveCocoa
-
-## Functional Reactive Programming (FRP)
+^ Add Image
 
 ---
 
-#FrieNDA.  
+# Thoughts and Experience using ReactiveCocoa Everyday for 5-6 months
 
-## Unreleased App
-## Code Examples
-## Please be kind ...
+^ Everyday since November
+
+---
+
+> FrieNDA.   
+
+^ Unreleased App;
+^ Code Examples
+^ Please be kind ...
 
 ---
 
 # Everyday ReactiveCocoa
 
-1. Talk about Functional Programming (briefly)
-2. Reactive Programming w/ Reactive Cocoa
-3. ReactiveCocoa Examples
+1. Review __*Functional*__ Programming 
+2. Introduce Functional __*Reactive*__ Programming
+3. Everyday __*ReactiveCocoa*__ Code Examples
 
 ---
 
-> Functional Programming
-
-> Functional Programming
+> Review Functional Programming
 
 ---
 
-> Monads ?!?
+> "In functional programming, programs are executed by evaluating expressions ... typically avoids using mutable state." 
+> 
+> -- Haskell Wiki 
+
+^ Declarative, Expressive, Side Effect Free.  This eliminates a whole class of bugs inherently.  
+
+--- 
+
+# Functional Building Blocks
+
+* Purity
+* Higher Order Functions
+* Recursion 
+
+--- 
+
+# Purity
+
+# f(x) = x + 1
+
+^ Output is calculated soley on its inputs
+^ Repeatable
+^ No Side Effects
+^ Immutable Data
 
 ---
-# Pure Functions
 
-### f(x) = x + 1
+# Higher Order Functions
 
----
+# Input or Output is a Function
 
-# Side Effect Free
-
-### Repeatable
+^ map, reduce, filter, concat, take ...
 
 ---
 
-# Immutable Objects
+# Recursion
 
-### NSString *newString = NSString string
-
----
-
-# Higher order Function
-
-### map, reduce, filter, concat, take ...
+# Haskell Wiki included this so I did too.
 
 ---
 > Functional Reactive Programming
@@ -70,13 +84,13 @@
 
 ---
 
-# Inputs and Ouputs 
+# Inputs and Ouputs - Josh Abernathy
 
-### "Programs take input and produce output. The output is the result of doing something with the input. Input, transform, output, done."
+# "Programs take input and produce output. The output is the result of doing something with the input. Input, transform, output, done."
 
 ### "The output at any one time is the result of combining all inputs. The output is a function of all inputs up to that time." - Josh Abernathy
 
-^ http://blog.maybeapps.com/post/42894317939/input-and-output
+-- http://blog.maybeapps.com/post/42894317939/input-and-output
 
 ---
 
@@ -100,16 +114,52 @@
 
 ---
 
-# Why
+# Standard Programming vs. Reactive Programming
+
+## Event Handlers, Delegates, KVO etc. vs. Writing Descriptive Expressions to Handle Events
+
+---
+
+# Why is FRP better?  
 
 * Minimal App State
 * Declarative
 * Expressive
 * Different ... 
 
+--- 
+
+# Expressiveness
+
+Typical example, a sign-up form:
+
+```objectivec
+RAC(self.submitButton, enabled) = [RACSignal
+    combineLatest:@[
+        self.firstNameField.rac_textSignal,
+        self.lastNameField.rac_textSignal,
+        self.emailField.rac_textSignal,
+        self.reEmailField.rac_textSignal
+    ]
+    reduce:^(NSString *first, NSString *last, NSString *email, NSString *reEmail) {
+        return @(first.length > 0 && last.length > 0 && email.length > 0 && reEmail.length > 0 && [email isEqual:reEmail]);
+    }];
+```
+
+##### https://github.com/kastiglione/ExpressiveReactiveCocoa
+
+---
+
+> Boom!
+
+---
+
+> Everyday __*ReactiveCocoa*__ Code Examples
+
 ---
 
 # ReactiveCocoa
+
 ## Reactive Functional Programming framework by Github
 
 ---
@@ -136,11 +186,7 @@
 
 # Real Power is combing and chaining signals
 
-### Build the Pipeline
-
----
-
-> Reactive Cocoa Examples
+# Build the Pipeline
 
 ---
 
@@ -156,7 +202,15 @@ Output
 
 ---
 
-> NOTE: ReactiveCocoa v3 is coming 
+# ReactiveCocoa v3 is coming soon
+
+---
+
+# Protips
+
+* Start by reading IntroToRx.com
+* Asks questions by opening issues at http://github.com/ReactiveCocoa/
+* 
 
 ---
 
@@ -166,10 +220,16 @@ Output
 
 # References
 
-* IntroToRx.com
-* Functional Reactive Programming by Ash Furrow 
-* NSHipster
-* Ray Wenderlich
-* Big Nerd Ranch
+* http://haskell.org/haskellwiki/Functional_programming
+* Intro to RX : http://IntroToRx.com
+
+---
+
+# Reactive Cocoa References
+
+* FRP on iOS by Ash Furrow : https://leanpub.com/iosfrp
+* NSHipster on RAC : http://nshipster.com/reactivecocoa/
+* Ray Wenderlich on RAC
+* Big Nerd Ranch on RAC 
 
 ---
