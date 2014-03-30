@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		68B84E5118E837B7008C5775 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B84E5018E837B7008C5775 /* Foundation.framework */; };
+		68B84E5318E837B7008C5775 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B84E5218E837B7008C5775 /* CoreGraphics.framework */; };
+		68B84E5518E837B7008C5775 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B84E5418E837B7008C5775 /* UIKit.framework */; };
+		68B84E5B18E837B7008C5775 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B84E5918E837B7008C5775 /* InfoPlist.strings */; };
+		68B84E5D18E837B7008C5775 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B84E5C18E837B7008C5775 /* main.m */; };
+		68B84E6118E837B7008C5775 /* MPXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B84E6018E837B7008C5775 /* MPXAppDelegate.m */; };
+		68B84E6418E837B7008C5775 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B84E6218E837B7008C5775 /* Main.storyboard */; };
+		68B84E6718E837B7008C5775 /* MPXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B84E6618E837B7008C5775 /* MPXViewController.m */; };
+		68B84E6918E837B7008C5775 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B84E6818E837B7008C5775 /* Images.xcassets */; };
+		68B84E7018E837B7008C5775 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B84E6F18E837B7008C5775 /* XCTest.framework */; };
+		68B84E7118E837B7008C5775 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B84E5018E837B7008C5775 /* Foundation.framework */; };
+		68B84E7218E837B7008C5775 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B84E5418E837B7008C5775 /* UIKit.framework */; };
+		68B84E7A18E837B7008C5775 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B84E7818E837B7008C5775 /* InfoPlist.strings */; };
+		68B84E7C18E837B7008C5775 /* EverydayReactiveCocoaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B84E7B18E837B7008C5775 /* EverydayReactiveCocoaTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		68B84E7318E837B7008C5775 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68B84E4518E837B7008C5775 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68B84E4C18E837B7008C5775;
+			remoteInfo = EverydayReactiveCocoa;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		68B84E4D18E837B7008C5775 /* EverydayReactiveCocoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EverydayReactiveCocoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68B84E5018E837B7008C5775 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		68B84E5218E837B7008C5775 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		68B84E5418E837B7008C5775 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		68B84E5818E837B7008C5775 /* EverydayReactiveCocoa-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EverydayReactiveCocoa-Info.plist"; sourceTree = "<group>"; };
+		68B84E5A18E837B7008C5775 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		68B84E5C18E837B7008C5775 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		68B84E5E18E837B7008C5775 /* EverydayReactiveCocoa-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EverydayReactiveCocoa-Prefix.pch"; sourceTree = "<group>"; };
+		68B84E5F18E837B7008C5775 /* MPXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPXAppDelegate.h; sourceTree = "<group>"; };
+		68B84E6018E837B7008C5775 /* MPXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPXAppDelegate.m; sourceTree = "<group>"; };
+		68B84E6318E837B7008C5775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		68B84E6518E837B7008C5775 /* MPXViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPXViewController.h; sourceTree = "<group>"; };
+		68B84E6618E837B7008C5775 /* MPXViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPXViewController.m; sourceTree = "<group>"; };
+		68B84E6818E837B7008C5775 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		68B84E6E18E837B7008C5775 /* EverydayReactiveCocoaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayReactiveCocoaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68B84E6F18E837B7008C5775 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		68B84E7718E837B7008C5775 /* EverydayReactiveCocoaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EverydayReactiveCocoaTests-Info.plist"; sourceTree = "<group>"; };
+		68B84E7918E837B7008C5775 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		68B84E7B18E837B7008C5775 /* EverydayReactiveCocoaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverydayReactiveCocoaTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68B84E4A18E837B7008C5775 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B84E5318E837B7008C5775 /* CoreGraphics.framework in Frameworks */,
+				68B84E5518E837B7008C5775 /* UIKit.framework in Frameworks */,
+				68B84E5118E837B7008C5775 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68B84E6B18E837B7008C5775 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B84E7018E837B7008C5775 /* XCTest.framework in Frameworks */,
+				68B84E7218E837B7008C5775 /* UIKit.framework in Frameworks */,
+				68B84E7118E837B7008C5775 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68B84E4418E837B7008C5775 = {
+			isa = PBXGroup;
+			children = (
+				68B84E5618E837B7008C5775 /* EverydayReactiveCocoa */,
+				68B84E7518E837B7008C5775 /* EverydayReactiveCocoaTests */,
+				68B84E4F18E837B7008C5775 /* Frameworks */,
+				68B84E4E18E837B7008C5775 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		68B84E4E18E837B7008C5775 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68B84E4D18E837B7008C5775 /* EverydayReactiveCocoa.app */,
+				68B84E6E18E837B7008C5775 /* EverydayReactiveCocoaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		68B84E4F18E837B7008C5775 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68B84E5018E837B7008C5775 /* Foundation.framework */,
+				68B84E5218E837B7008C5775 /* CoreGraphics.framework */,
+				68B84E5418E837B7008C5775 /* UIKit.framework */,
+				68B84E6F18E837B7008C5775 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		68B84E5618E837B7008C5775 /* EverydayReactiveCocoa */ = {
+			isa = PBXGroup;
+			children = (
+				68B84E5F18E837B7008C5775 /* MPXAppDelegate.h */,
+				68B84E6018E837B7008C5775 /* MPXAppDelegate.m */,
+				68B84E6218E837B7008C5775 /* Main.storyboard */,
+				68B84E6518E837B7008C5775 /* MPXViewController.h */,
+				68B84E6618E837B7008C5775 /* MPXViewController.m */,
+				68B84E6818E837B7008C5775 /* Images.xcassets */,
+				68B84E5718E837B7008C5775 /* Supporting Files */,
+			);
+			path = EverydayReactiveCocoa;
+			sourceTree = "<group>";
+		};
+		68B84E5718E837B7008C5775 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68B84E5818E837B7008C5775 /* EverydayReactiveCocoa-Info.plist */,
+				68B84E5918E837B7008C5775 /* InfoPlist.strings */,
+				68B84E5C18E837B7008C5775 /* main.m */,
+				68B84E5E18E837B7008C5775 /* EverydayReactiveCocoa-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68B84E7518E837B7008C5775 /* EverydayReactiveCocoaTests */ = {
+			isa = PBXGroup;
+			children = (
+				68B84E7B18E837B7008C5775 /* EverydayReactiveCocoaTests.m */,
+				68B84E7618E837B7008C5775 /* Supporting Files */,
+			);
+			path = EverydayReactiveCocoaTests;
+			sourceTree = "<group>";
+		};
+		68B84E7618E837B7008C5775 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68B84E7718E837B7008C5775 /* EverydayReactiveCocoaTests-Info.plist */,
+				68B84E7818E837B7008C5775 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		68B84E4C18E837B7008C5775 /* EverydayReactiveCocoa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68B84E7F18E837B7008C5775 /* Build configuration list for PBXNativeTarget "EverydayReactiveCocoa" */;
+			buildPhases = (
+				68B84E4918E837B7008C5775 /* Sources */,
+				68B84E4A18E837B7008C5775 /* Frameworks */,
+				68B84E4B18E837B7008C5775 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EverydayReactiveCocoa;
+			productName = EverydayReactiveCocoa;
+			productReference = 68B84E4D18E837B7008C5775 /* EverydayReactiveCocoa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		68B84E6D18E837B7008C5775 /* EverydayReactiveCocoaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68B84E8218E837B7008C5775 /* Build configuration list for PBXNativeTarget "EverydayReactiveCocoaTests" */;
+			buildPhases = (
+				68B84E6A18E837B7008C5775 /* Sources */,
+				68B84E6B18E837B7008C5775 /* Frameworks */,
+				68B84E6C18E837B7008C5775 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68B84E7418E837B7008C5775 /* PBXTargetDependency */,
+			);
+			name = EverydayReactiveCocoaTests;
+			productName = EverydayReactiveCocoaTests;
+			productReference = 68B84E6E18E837B7008C5775 /* EverydayReactiveCocoaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68B84E4518E837B7008C5775 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MPX;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Rob Pearson";
+				TargetAttributes = {
+					68B84E6D18E837B7008C5775 = {
+						TestTargetID = 68B84E4C18E837B7008C5775;
+					};
+				};
+			};
+			buildConfigurationList = 68B84E4818E837B7008C5775 /* Build configuration list for PBXProject "EverydayReactiveCocoa" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 68B84E4418E837B7008C5775;
+			productRefGroup = 68B84E4E18E837B7008C5775 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68B84E4C18E837B7008C5775 /* EverydayReactiveCocoa */,
+				68B84E6D18E837B7008C5775 /* EverydayReactiveCocoaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68B84E4B18E837B7008C5775 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B84E6918E837B7008C5775 /* Images.xcassets in Resources */,
+				68B84E5B18E837B7008C5775 /* InfoPlist.strings in Resources */,
+				68B84E6418E837B7008C5775 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68B84E6C18E837B7008C5775 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B84E7A18E837B7008C5775 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		68B84E4918E837B7008C5775 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B84E6118E837B7008C5775 /* MPXAppDelegate.m in Sources */,
+				68B84E5D18E837B7008C5775 /* main.m in Sources */,
+				68B84E6718E837B7008C5775 /* MPXViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68B84E6A18E837B7008C5775 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B84E7C18E837B7008C5775 /* EverydayReactiveCocoaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68B84E7418E837B7008C5775 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68B84E4C18E837B7008C5775 /* EverydayReactiveCocoa */;
+			targetProxy = 68B84E7318E837B7008C5775 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		68B84E5918E837B7008C5775 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68B84E5A18E837B7008C5775 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		68B84E6218E837B7008C5775 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68B84E6318E837B7008C5775 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		68B84E7818E837B7008C5775 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68B84E7918E837B7008C5775 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		68B84E7D18E837B7008C5775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		68B84E7E18E837B7008C5775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		68B84E8018E837B7008C5775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EverydayReactiveCocoa/EverydayReactiveCocoa-Prefix.pch";
+				INFOPLIST_FILE = "EverydayReactiveCocoa/EverydayReactiveCocoa-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		68B84E8118E837B7008C5775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EverydayReactiveCocoa/EverydayReactiveCocoa-Prefix.pch";
+				INFOPLIST_FILE = "EverydayReactiveCocoa/EverydayReactiveCocoa-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		68B84E8318E837B7008C5775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EverydayReactiveCocoa.app/EverydayReactiveCocoa";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EverydayReactiveCocoa/EverydayReactiveCocoa-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "EverydayReactiveCocoaTests/EverydayReactiveCocoaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		68B84E8418E837B7008C5775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EverydayReactiveCocoa.app/EverydayReactiveCocoa";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EverydayReactiveCocoa/EverydayReactiveCocoa-Prefix.pch";
+				INFOPLIST_FILE = "EverydayReactiveCocoaTests/EverydayReactiveCocoaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68B84E4818E837B7008C5775 /* Build configuration list for PBXProject "EverydayReactiveCocoa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68B84E7D18E837B7008C5775 /* Debug */,
+				68B84E7E18E837B7008C5775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68B84E7F18E837B7008C5775 /* Build configuration list for PBXNativeTarget "EverydayReactiveCocoa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68B84E8018E837B7008C5775 /* Debug */,
+				68B84E8118E837B7008C5775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		68B84E8218E837B7008C5775 /* Build configuration list for PBXNativeTarget "EverydayReactiveCocoaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68B84E8318E837B7008C5775 /* Debug */,
+				68B84E8418E837B7008C5775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 68B84E4518E837B7008C5775 /* Project object */;
+}

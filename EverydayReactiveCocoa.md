@@ -20,9 +20,7 @@
 
 > FrieNDA.   
 
-^ Unreleased App;
-^ Code Examples
-^ Please be kind ...
+^ Unreleased App.  Code Examples.  Please be kind ... 
 
 ---
 
@@ -38,9 +36,11 @@
 
 ---
 
-> "In functional programming, programs are executed by evaluating expressions ... typically avoids using mutable state." 
-> 
-> -- Haskell Wiki 
+# Functional Programming
+
+## In functional programming, programs are executed by evaluating expressions  ... avoids using mutable state.
+
+##### - Haskell Wiki http://haskell.org/haskellwiki/Functional_programming
 
 ^ Declarative, Expressive, Side Effect Free.  This eliminates a whole class of bugs inherently.  
 
@@ -56,7 +56,7 @@
 
 # Purity
 
-# f(x) = x + 1
+## f(x) = x + 1
 
 ^ Output is calculated soley on its inputs
 ^ Repeatable
@@ -67,7 +67,7 @@
 
 # Higher Order Functions
 
-# Input or Output is a Function
+## Input or Output is a Function
 
 ^ map, reduce, filter, concat, take ...
 
@@ -75,12 +75,11 @@
 
 # Recursion
 
-# Haskell Wiki included this so I did too.
+## Haskell Wiki included this so I did too.
 
 ---
-> Functional Reactive Programming
 
-### Functional reactive programming (FRP) is a programming paradigm for reactive programming using the building blocks of functional programming. - Wikipedia
+> Functional Reactive Programming
 
 ---
 
@@ -116,7 +115,7 @@
 
 # Standard Programming vs. Reactive Programming
 
-## Event Handlers, Delegates, KVO etc. vs. Writing Descriptive Expressions to Handle Events
+## Event Handlers, Delegates, KVO etc. vs. Descriptive Expressions to Handle Events
 
 ---
 
