@@ -1,0 +1,11 @@
+platform :ios, '7.0'
+
+pod 'ReactiveCocoa'
+
+# Add Kiwi as an exclusive dependency for the App Tests target
+target :EverydayReactiveCocoaTests, :exclusive => true do
+
+pod 'Kiwi/XCTest'
+pod 'Expecta'
+
+end

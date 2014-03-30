@@ -87,8 +87,6 @@
 
 # "Programs take input and produce output. The output is the result of doing something with the input. Input, transform, output, done."
 
-### "The output at any one time is the result of combining all inputs. The output is a function of all inputs up to that time." - Josh Abernathy
-
 -- http://blog.maybeapps.com/post/42894317939/input-and-output
 
 ---
@@ -96,20 +94,22 @@
 # Inputs
 
 * Keyboard (text) input
-* Click/Touches (mouse, finger) input
+* Click/Touch input
 * Timers (intervals)
-* Location changes
+* GPS location changes
 * Data from webservices
 * Images from webservices
+* ...
 
 ---
 
 # Outputs
 
-* Display
-* Sounds
+* UI Changes
+* Sounds 
 * Persist data somewhere
 * Push data to the cloud
+* ...
 
 ---
 
