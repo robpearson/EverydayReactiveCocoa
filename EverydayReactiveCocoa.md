@@ -4,11 +4,11 @@
 
 ---
 
-# Maple Pixel.  
+# Maple Pixel
 
-## Everyday Transit coming soon.
+## Everyday Transit coming soon  ... hopefully
 
-^ Add Image
+^ Add Teaser Image
 
 ---
 
@@ -26,8 +26,8 @@
 
 # Everyday ReactiveCocoa
 
-1. Review __*Functional*__ Programming 
-2. Introduce Functional __*Reactive*__ Programming
+1. Review __*Functional Programming*__
+2. Introduce __*Functional Reactive Programming*__
 3. Everyday __*ReactiveCocoa*__ Code Examples
 
 ---
@@ -50,7 +50,6 @@
 
 * Purity
 * Higher Order Functions
-* Recursion 
 
 --- 
 
@@ -73,12 +72,6 @@
 
 ---
 
-# Recursion
-
-## Not much to say about this
-
----
-
 > Functional Reactive Programming
 
 ---
@@ -97,8 +90,7 @@
 * Click/Touch input
 * Timers (intervals)
 * GPS location changes
-* Data from webservices
-* Images from webservices
+* Resources from web services
 
 ...
 
@@ -113,14 +105,6 @@
 
 ...
 
----
-
-# Conventional Programming vs. Reactive Programming
-
-## Event Handlers, Delegates, KVO vs. Descriptive Expressions to Handle Events
-
-^ Talk about how reactive programming is declarative and expressive.  It involves writing description expressions that handle events.
-
 --- 
 
 ![fit](Pipeline.png)
@@ -134,37 +118,48 @@
 # Reacting to Signals via subscriptions
 
 ```objectivec
-[signal subscribeNext:^(id value) {
-    // Event handling
-} error:^(NSError *error) {
-    // Error handling
-} completed:^{
-    // Completion handling
-}];
+
+[[self.transitLocationRepository getTransitLocations]     subscribeNext:^(MPXTransitLocation *transitLocation) {
+
+        // Do something interesting with transit location 
+
+    }                                                             error:^(NSError *error) {
+
+        // Error handling
+
+    }                                                         completed:^{
+
+        // Completion handling
+
+    }];
+
 ```
 
 ^ So we have a signal, how do we react to its changes.
 
 --- 
 
-# Hello World
-
-Typical example, a sign-up form:
+# Everyday Transit Example
 
 ```objectivec
-RAC(self.submitButton, enabled) = [RACSignal
-    combineLatest:@[
-        self.firstNameField.rac_textSignal,
-        self.lastNameField.rac_textSignal,
-        self.emailField.rac_textSignal,
-        self.reEmailField.rac_textSignal
-    ]
-    reduce:^(NSString *first, NSString *last, NSString *email, NSString *reEmail) {
-        return @(first.length > 0 && last.length > 0 && email.length > 0 && reEmail.length > 0 && [email isEqual:reEmail]);
-    }];
-```
 
-##### Josh Abernathy - http://blog.maybeapps.com/post/42894317939/input-and-output
+self.canAddNewEverydayTransitTripSignal = [RACSignal 
+    combineLatest:@[
+        self.selectedDepartingStationSignal, 
+        self.selectedArrivingStationSignal
+    ] 
+    reduce: ^id(MPXTransitLocation *departingTransitLocation, MPXTransitLocation *arrivingTransitLocation) {
+
+            BOOL isValid = NO;
+
+            if (departingTransitLocation != nil && arrivingTransitLocation != nil) {
+                isValid = YES;
+            }
+
+            return @(isValid);
+        }];
+
+```
 
 ----
 
@@ -181,7 +176,10 @@ RAC(self.submitButton, enabled) = [RACSignal
 * Minimal App State 
 * Declarative
 * Expressive
-* Different ... 
+* Different
+
+^ Different: Simpler, nicer design and it can be easier to test.  
+^ Different: It does change the dev patterns as there will be big up front RAC init/bindings via viewDidLoad.  
 
 ---
 
@@ -195,7 +193,7 @@ RAC(self.submitButton, enabled) = [RACSignal
 
 # It's all about Signals! (RACSignal)
 
-## Build the Pineline
+## Build the Pipeline
 
 ---
 
@@ -268,13 +266,18 @@ RAC(self.submitButton, enabled) = [RACSignal
 
 ---
 
-# RAC macro for binding a signal to a property
+# Bind a signal to a property
 
+```objectivec
 
+RACSignal *titleSignal = [RACObserve(self.viewModel, title) distinctUntilChanged];
+RAC(self, title) = [titleSignal deliverOn:[RACScheduler mainThreadScheduler]];
+
+```
 
 ---
 
-# RAC for handling selectors etc
+# React to Delegates/Selectors
 
 ```
 
@@ -296,65 +299,51 @@ RAC(self.submitButton, enabled) = [RACSignal
 
 ---
 
-# Signals for blah
+# React to Button Commands
 
 ```objectivec
 
-   // Add Button
-    self.addButton.rac_command = [[RACCommand alloc]
-            initWithEnabled:self.viewModel.canAddNewEverydayTransitTripSignal
-                signalBlock:^RACSignal *(id input) {
+// Add Button
+self.addButton.rac_command = [[RACCommand alloc]
+        initWithEnabled:self.viewModel.canAddNewEverydayTransitTripSignal
+            signalBlock:^RACSignal *(id input) {
 
-                    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-                        @strongify(self);
+                // Add New Everyday Transit Trip
 
-                        BOOL hasAddedNewTrip = [self.viewModel addNewEverydayTransitTrip]; // <- signal so i can manage errors
-
-                        if (hasAddedNewTrip == YES){
-                            [self performSegueWithIdentifier:@"newEverydayTripAdded" sender:self];
-                        }
-                        else{
-                            // TODO: Add support for error handling from the command.
-                        }
-
-                        [subscriber sendCompleted];
-                        return nil;
-                    }];
-                }];
-    [self.addButton.rac_command.errors subscribeNext:^(id x) {
-        // TODO: Add support for error handling from the command.
-    }];
-
+            }];
+[self.addButton.rac_command.errors subscribeNext:^(id x) {
+    // TODO: Add support for error handling from the command.
+}];
 
 ```
 
 ---
 
-# RAC helpers for generating signals from controls
+# React to Control Events
 
 ```objectivec
 
 MCSimpleTableCell *everydayTransitTripCell = [[MCSimpleTableCell alloc] init];
-            everydayTransitTripCell.cellIdentifier = @"cellwithswitch";
-            everydayTransitTripCell.configureBlock = ^(MCSimpleTableCell *cell, UITableViewCell *tableCell) {
+everydayTransitTripCell.cellIdentifier = @"cellwithswitch";
+everydayTransitTripCell.configureBlock = ^(MCSimpleTableCell *cell, UITableViewCell *tableCell) {
 
-                tableCell.textLabel.text = trip.tripDescription;
+    tableCell.textLabel.text = trip.tripDescription;
 
-                UISwitch *control = [[UISwitch alloc] initWithFrame:CGRectZero];
-                control.on = trip.isEnabled;
-                tableCell.accessoryView = control;
+    UISwitch *control = [[UISwitch alloc] initWithFrame:CGRectZero];
+    control.on = trip.isEnabled;
+    tableCell.accessoryView = control;
 
-                tableCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    tableCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-                [[control rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
+    [[control rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
 
-                    @strongify(self);
-                    [self.viewModel toggleTripEnablementWithEverydayTransitTripId:trip.everydayTransitTripId];
+        @strongify(self);
+        [self.viewModel toggleTripEnablementWithEverydayTransitTripId:trip.everydayTransitTripId];
 
-                }];
+    }];
 
-            };
-            [everydayTransitTripsSection addCell:everydayTransitTripCell];
+};
+[everydayTransitTripsSection addCell:everydayTransitTripCell];
 
 ```
 
@@ -362,30 +351,24 @@ MCSimpleTableCell *everydayTransitTripCell = [[MCSimpleTableCell alloc] init];
 
 # Real Power is combing and chaining signals
 
-# Build the Pipeline - Demo
-
 ---
 
-### Simple Transit Dashboard
+### Everyday Transit Dashboard
 
-Inputs
-* Transit Service Times
+Inputs:
+* Transit Trip Times
 * Location Updates
 * Time Updates
 
-Output
+Output:
 * Next Transit Service based on time/location
-
----
-
-# ReactiveCocoa v3 is coming soon
 
 ---
 
 # Protips
 
 * Start by reading IntroToRx.com
-* Start small and build.
+* Start small and iterate.
 * Asks questions by opening issues at http://github.com/ReactiveCocoa/
 
 ---
@@ -399,22 +382,14 @@ Output
 
 ---
 
-> Questions?
-
----
-
 # References
 
-* http://haskell.org/haskellwiki/Functional_programming
-* Intro to RX : http://IntroToRx.com
+* NSHipster on RAC: http://nshipster.com/reactivecocoa/
+* Ray Wenderlich Tutorial: https://bit.ly/1rXA31Y
+* Big Nerd Ranch Tutorial: https://bit.ly/1mp04mI
+* FRP on iOS by Ash Furrow: https://leanpub.com/iosfrp
+* Brent Simmons on ReactiveCocoa: https://bit.ly/PcyjCL
 
 ---
 
-# Reactive Cocoa References
-
-* FRP on iOS by Ash Furrow : https://leanpub.com/iosfrp
-* NSHipster on RAC : http://nshipster.com/reactivecocoa/
-* Ray Wenderlich on RAC
-* Big Nerd Ranch on RAC 
-
----
+> Questions?
