@@ -6,7 +6,9 @@
 
 # Maple Pixel
 
-## Everyday Transit coming soon  ... hopefully
+## Transit App coming soon  ... hopefully
+
+![fit](Maple Pixel Logo.png)
 
 ^ Add Teaser Image
 
@@ -18,9 +20,9 @@
 
 ---
 
-> FrieNDA.   
+> FrieNDA.
 
-^ Unreleased App.  Code Examples.  Please be kind ... 
+^ Unreleased App.  Code Examples.  Please be kind ...
 
 ---
 
@@ -44,14 +46,14 @@
 
 ^ Declarative, Expressive, Side Effect Free.  This eliminates a whole class of bugs inherently.  
 
---- 
+---
 
 # Functional Building Blocks
 
 * Purity
 * Higher Order Functions
 
---- 
+---
 
 # Purity
 
@@ -99,13 +101,13 @@
 # Outputs
 
 * UI Changes
-* Sounds 
+* Sounds
 * Persist data somewhere
 * Push data to the cloud
 
 ...
 
---- 
+---
 
 ![fit](Pipeline.png)
 
@@ -121,7 +123,7 @@
 
 [[self.transitLocationRepository getTransitLocations]     subscribeNext:^(MPXTransitLocation *transitLocation) {
 
-        // Do something interesting with transit location 
+        // Do something interesting with transit location
 
     }                                                             error:^(NSError *error) {
 
@@ -137,17 +139,17 @@
 
 ^ So we have a signal, how do we react to its changes.
 
---- 
+---
 
-# Everyday Transit Example
+# Transit App Example
 
 ```objectivec
 
-self.canAddNewEverydayTransitTripSignal = [RACSignal 
+self.canAddNewEverydayTransitTripSignal = [RACSignal
     combineLatest:@[
-        self.selectedDepartingStationSignal, 
+        self.selectedDepartingStationSignal,
         self.selectedArrivingStationSignal
-    ] 
+    ]
     reduce: ^id(MPXTransitLocation *departingTransitLocation, MPXTransitLocation *arrivingTransitLocation) {
 
             BOOL isValid = NO;
@@ -173,7 +175,7 @@ self.canAddNewEverydayTransitTripSignal = [RACSignal
 
 # Why is FRP better?  
 
-* Minimal App State 
+* Minimal App State
 * Declarative
 * Expressive
 * Different
@@ -252,12 +254,12 @@ self.canAddNewEverydayTransitTripSignal = [RACSignal
 
 ```objectivec
 
-// Bind Everyday Transit Trips to Table View
+// Bind Transit Trips to Table View
 [RACObserve(self.viewModel, everydayTransitTrips) subscribeNext:^(id x) {
     @strongify(self);
 
-    // Refresh 'Everyday Transit Trips' MCSimpleTableSection if needed
-    ... 
+    // Refresh 'Transit Trips' MCSimpleTableSection if needed
+    ...
 
     [self.tableView reloadData];
 }];
@@ -293,7 +295,7 @@ RAC(self, title) = [titleSignal deliverOn:[RACScheduler mainThreadScheduler]];
             [self.viewModel filterArrivingLocationsByName:self.arrivingLocationsSearchBar.text];
         }
 
-    }]; 
+    }];
 
 ```
 
@@ -308,7 +310,7 @@ self.addButton.rac_command = [[RACCommand alloc]
         initWithEnabled:self.viewModel.canAddNewEverydayTransitTripSignal
             signalBlock:^RACSignal *(id input) {
 
-                // Add New Everyday Transit Trip
+                // Add New Transit Trip
 
             }];
 [self.addButton.rac_command.errors subscribeNext:^(id x) {
@@ -353,7 +355,7 @@ everydayTransitTripCell.configureBlock = ^(MCSimpleTableCell *cell, UITableViewC
 
 ---
 
-### Everyday Transit Dashboard
+### Transit App Dashboard
 
 Inputs:
 * Transit Trip Times
@@ -384,7 +386,7 @@ Output:
 
 # References
 
-* NSHipster on RAC: http://nshipster.com/reactivecocoa/
+* Github Repo: http://github.com/ReactiveCocoa/
 * Ray Wenderlich Tutorial: https://bit.ly/1rXA31Y
 * Big Nerd Ranch Tutorial: https://bit.ly/1mp04mI
 * FRP on iOS by Ash Furrow: https://leanpub.com/iosfrp
