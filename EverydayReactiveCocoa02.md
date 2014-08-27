@@ -1,4 +1,4 @@
-# Everyday ReactiveCocoa
+# ReactiveCocoa Lessons Learned
 
 ## Rob Pearson @robpearson
 
@@ -6,21 +6,15 @@
 
 # Maple Pixel
 
-## Transit App coming soon  ... hopefully
+## Everyday Transit 1.0
+## coming soon ...
 
-![fit](Maple Pixel Logo.png)
-
-^ Add Teaser Image
-
----
-
-# Thoughts and Experience using ReactiveCocoa Everyday for 5-6 months
-
-^ Everyday since November
+![fit](Maple Pixel Logo Mark.png)
+![fit](EverydayTransit.jpg)
 
 ---
 
-> FrieNDA.
+# FrieNDA
 
 ^ Unreleased App.  Code Examples.  Please be kind ...
 
@@ -28,9 +22,9 @@
 
 # Everyday ReactiveCocoa
 
-1. Review __*Functional Programming*__
-2. Introduce __*Functional Reactive Programming*__
-3. Everyday __*ReactiveCocoa*__ Code Examples
+1. __*Functional Programming*__ Briefly
+2. __*RACify*__ your code
+3. __*RAC*__ Lessons Learned (Code Examples)
 
 ---
 
@@ -40,11 +34,11 @@
 
 # Functional Programming
 
-## In functional programming, programs are executed by evaluating expressions  ... avoids using mutable state.
-
-##### - Haskell Wiki http://haskell.org/haskellwiki/Functional_programming
+## Avoid State
 
 ^ Declarative, Expressive, Side Effect Free.  This eliminates a whole class of bugs inherently.  
+
+##
 
 ---
 
@@ -74,280 +68,67 @@
 
 ---
 
-> Functional Reactive Programming
+# Describe Reactive Cocoa Pipeline
+
+## Event Stream
 
 ---
 
-# Inputs and Outputs
+# So you have Signals/Event Streams.  Now what?  
 
-## "Programs take input and produce output. The output is the result of doing something with the input. Input, transform, output, done."
-
-##### Josh Abernathy - http://blog.maybeapps.com/post/42894317939/input-and-output
+## Subscribing, Error Handling etc.
 
 ---
 
-# Inputs
-
-* Keyboard (text) input
-* Click/Touch input
-* Timers (intervals)
-* GPS location changes
-* Resources from web services
-
-...
+# Things get interesting when you combine signals
 
 ---
 
-# Outputs
 
-* UI Changes
-* Sounds
-* Persist data somewhere
-* Push data to the cloud
-
-...
+# Everyday Transit Pipeline
 
 ---
 
-![fit](Pipeline.png)
-
-^ Talk about signal "pipeline" and how events are added over time.  The program reacts to handle the new inputs/events.  
-
-^ NOTE: Pipeline is my term.  It's pretty standard but make sure people understand it's not a RAC/Reactive thing.
+# RACify your existing (Obj-c Code)
 
 ---
 
-# Reacting to Signals via subscriptions
+# KVO
 
-```objectivec
-
-[[self.transitLocationRepository getTransitLocations]     subscribeNext:^(MPXTransitLocation *transitLocation) {
-
-        // Do something interesting with transit location
-
-    }                                                             error:^(NSError *error) {
-
-        // Error handling
-
-    }                                                         completed:^{
-
-        // Completion handling
-
-    }];
-
-```
-
-^ So we have a signal, how do we react to its changes.
+## This is worth the dependency
 
 ---
 
-# Transit App Example
-
-```objectivec
-
-self.canAddNewEverydayTransitTripSignal = [RACSignal
-    combineLatest:@[
-        self.selectedDepartingStationSignal,
-        self.selectedArrivingStationSignal
-    ]
-    reduce: ^id(MPXTransitLocation *departingTransitLocation, MPXTransitLocation *arrivingTransitLocation) {
-
-            BOOL isValid = NO;
-
-            if (departingTransitLocation != nil && arrivingTransitLocation != nil) {
-                isValid = YES;
-            }
-
-            return @(isValid);
-        }];
-
-```
-
-----
-
-![fit](Typical Example.png)
+# Work with Protocols
 
 ---
 
-> Boom!
+# Handle events, notifications etc.
+
 
 ---
 
-# Why is FRP better?  
-
-* Minimal App State
-* Declarative
-* Expressive
-* Different
-
-^ Different: Simpler, nicer design and it can be easier to test.  
-^ Different: It does change the dev patterns as there will be big up front RAC init/bindings via viewDidLoad.  
+# ReactiveCocoa Lessons Learned
 
 ---
 
-# ReactiveCocoa
+# Lesson # 1 - Learn More about Funtional Programming
 
-## Reactive Functional Programming framework by Github
-
-^ OK, let's talk about ReactiveCocoa.
+^ Immutable Objects are good,
 
 ---
 
-# It's all about Signals! (RACSignal)
+# Reactive Timer #1
 
-## Build the Pipeline
-
----
-
-> Everyday ReactiveCocoa Code Examples
+## Map Time
 
 ---
 
-# Creating Signals
-
-```objectivec
-
-- (RACSignal *)runReactiveDatabaseFetchBlock:(FMResultSet *(^)(FMDatabase *database))databaseFetchBlock andMapObjects:(id (^)(FMResultSet * resultSet))mapObjectBlock {
-
-    // TODO: Rename as this isn't ideal.
-
-    NSParameterAssert(databaseFetchBlock != nil);
-    NSParameterAssert(mapObjectBlock != nil);
-
-    RACSignal *databaseFetchSignal = [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-
-        __block FMResultSet *resultSet = nil;
-
-        [self.databaseQueue inDatabase:^(FMDatabase *database) {
-
-            resultSet = databaseFetchBlock(database);
-
-            while ([resultSet next]) {
-                id object = mapObjectBlock(resultSet);
-                if (object != nil) {
-                    [subscriber sendNext:object];
-                }
-            }
-
-        }];
-
-        [subscriber sendCompleted];
-
-        return [RACDisposable disposableWithBlock:^{
-
-            if (resultSet != nil){
-                [resultSet close];
-            }
-
-        }];
-
-    }];
-
-    return databaseFetchSignal;
-}
-
-```
+# Reactive Timer #2
 
 ---
 
-# Key Value Observing
-
-```objectivec
-
-// Bind Transit Trips to Table View
-[RACObserve(self.viewModel, everydayTransitTrips) subscribeNext:^(id x) {
-    @strongify(self);
-
-    // Refresh 'Transit Trips' MCSimpleTableSection if needed
-    ...
-
-    [self.tableView reloadData];
-}];
-
-```
-
----
-
-# Bind a signal to a property
-
-```objectivec
-
-RACSignal *titleSignal = [RACObserve(self.viewModel, title) distinctUntilChanged];
-RAC(self, title) = [titleSignal deliverOn:[RACScheduler mainThreadScheduler]];
-
-```
-
----
-
-# React to Delegates/Selectors
-
-```
-
-    [[self rac_signalForSelector:@selector(searchBar:textDidChange:) fromProtocol:@protocol(UISearchBarDelegate)] subscribeNext:^(RACTuple *value) {
-        @strongify(self);
-
-        UISearchBar *searchBar = value.first;
-
-        if (searchBar == self.departingLocationsSearchBar) {
-            [self.viewModel filterDepartingLocationsByName:self.departingLocationsSearchBar.text];
-        }
-        else {
-            [self.viewModel filterArrivingLocationsByName:self.arrivingLocationsSearchBar.text];
-        }
-
-    }];
-
-```
-
----
-
-# React to Button Commands
-
-```objectivec
-
-// Add Button
-self.addButton.rac_command = [[RACCommand alloc]
-        initWithEnabled:self.viewModel.canAddNewEverydayTransitTripSignal
-            signalBlock:^RACSignal *(id input) {
-
-                // Add New Transit Trip
-
-            }];
-[self.addButton.rac_command.errors subscribeNext:^(id x) {
-    // TODO: Add support for error handling from the command.
-}];
-
-```
-
----
-
-# React to Control Events
-
-```objectivec
-
-MCSimpleTableCell *everydayTransitTripCell = [[MCSimpleTableCell alloc] init];
-everydayTransitTripCell.cellIdentifier = @"cellwithswitch";
-everydayTransitTripCell.configureBlock = ^(MCSimpleTableCell *cell, UITableViewCell *tableCell) {
-
-    tableCell.textLabel.text = trip.tripDescription;
-
-    UISwitch *control = [[UISwitch alloc] initWithFrame:CGRectZero];
-    control.on = trip.isEnabled;
-    tableCell.accessoryView = control;
-
-    tableCell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-    [[control rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
-
-        @strongify(self);
-        [self.viewModel toggleTripEnablementWithEverydayTransitTripId:trip.everydayTransitTripId];
-
-    }];
-
-};
-[everydayTransitTripsSection addCell:everydayTransitTripCell];
-
-```
+# Use lift_sigal for consitency.
 
 ---
 
