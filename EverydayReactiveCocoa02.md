@@ -28,8 +28,7 @@
 
 ---
 
-# Functional Programming
-# Briefly
+> Functional Programming Briefly
 
 ---
 
@@ -50,7 +49,7 @@
 
 ---
 
-# Signals and Pipelines
+> Signals and Pipelines
 
 ---
 
@@ -58,12 +57,15 @@
 
 ---
 
-# Transit Dashboard Pipelines/Signals
+# Transit Dashboard Pipeline
 
-* Input: List of Everyday Trips (Favourites)
-* Input: GPS Location
-* Input: Time
-* Output: Next Transit Trip
+Inputs:
+* List of Everyday Trips (Favourites)
+* GPS Location
+* Time
+
+Outputs:
+* Next Transit Trip
 
 ^ It's all about Inputs and Outputs
 
@@ -71,6 +73,26 @@
 
 # Pipelines ==
 # RACSignals
+
+---
+
+# RACSignal Example
+
+```objectivec
+
+[RACSignal createSignal:^(id<RACSubscriber subscriber) {
+
+  // Do Something
+	u_int32_t r = arc4random();
+
+	// Start (and in this case complete) the signal.
+	[subscriber sendNext:@(r)];
+	[subscriber sendCompleted];
+
+	return (RACDisposable *)nil;
+}];
+
+```
 
 ---
 
@@ -86,10 +108,7 @@
 
 ---
 
-# *RAC* Lessons Learned
-
-1. RACify your existing (obj-c) Code
-2. RACSignal things
+![fit](RacLessonsLearned.png)
 
 ---
 
@@ -113,10 +132,8 @@
 [RACObserve(self.viewModel, everydayTransitTrips) subscribeNext:^(id x) {
     @strongify(self);
 
-    // Refresh 'Transit Trips' MCSimpleTableSection if needed
-    ...
-
     [self.tableView reloadData];
+
 }];
 
 ```
@@ -127,15 +144,48 @@
 
 ---
 
-# Code Example: Lift Selector thing.
+# rac_signalForSelector
+
+```objectivec
+
+[[self rac_signalForSelector:@selector(searchBar:textDidChange:) fromProtocol:@protocol(UISearchBarDelegate)] subscribeNext:^(RACTuple *value) {
+    @strongify(self);
+
+    UISearchBar *searchBar = value.first;
+
+    if (searchBar == self.departingLocationsSearchBar) {
+        [self.viewModel filterDepartingLocationsByName:self.departingLocationsSearchBar.text];
+    }
+    else {
+        [self.viewModel filterArrivingLocationsByName:self.arrivingLocationsSearchBar.text];
+    }
+
+}];
+
+```
 
 ---
 
-# Create Signals of Events, Notifications, Reachability etc.
+# Take advantage of RAC Category Methods
+
+^ Touch Events, Notifications, Reachability etc.
 
 ---
 
-# Signal
+# NotificationCentre
+
+```objectivec
+
+RACSignal *appActiveSignal = [[[[NSNotificationCenter.defaultCenter
+        rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil] mapReplace:@YES]
+        startWith:@YES]
+        setNameWithFormat:@"%@ appActive", self];
+
+```
+
+---
+
+# Signal Tips and Tricks
 
 ---
 
@@ -145,29 +195,45 @@
 
 ---
 
-# Reactive Timer #2
+# Reactive Timer #1
 
-## Empty Signal with a delay.  
+```objectivec
+
+    [[[[[RACSignal interval:60 onScheduler:[RACScheduler scheduler]]
+            map:^id(NSDate *timestamp) {
+                @strongify(self);
+
+                if (self.hasEverydayTrips != nil && [@(YES) isEqualToNumber:self.hasEverydayTrips]) {
+                    return @"SEQ";
+                }
+                else {
+                    return @"Everyday Transit";
+                }
+            }]
+            startWith:@"Everyday Transit"]
+            distinctUntilChanged]
+            deliverOn:[RACScheduler mainThreadScheduler]];
+
+```
 
 ---
 
-# Use lift_sigal for consitency.
+# Reactive Timer #2
+
+## Empty Signal with a delay.
+
+---
+
+    RACSignal *nextTransitTripIntervalSignal = [RACSignal interval:1 onScheduler:[RACScheduler scheduler]];
+    RACSignal *currentUserLocationRefreshDelay = [[RACSignal empty] delay:60];
+    RACSignal *currentUserLocationRefreshSignal = [[[self.locationService.locationSignal
+            take:1]
+            concat:currentUserLocationRefreshDelay]
+            repeat];
 
 ---
 
 # Real Power is combing and chaining signals
-
----
-
-### Transit App Dashboard
-
-Inputs:
-* Transit Trip Times
-* Location Updates
-* Time Updates
-
-Output:
-* Next Transit Service based on time/location
 
 ---
 
