@@ -23,79 +23,103 @@
 # Everyday ReactiveCocoa
 
 1. __*Functional Programming*__ Briefly
-2. __*RACify*__ your code
-3. __*RAC*__ Lessons Learned (Code Examples)
-
----
-
-> Review Functional Programming
+1. __*Signals and Pipelines*__
+3. __*RAC*__ Lessons Learned
 
 ---
 
 # Functional Programming
-
-## Avoid State
-
-^ Declarative, Expressive, Side Effect Free.  This eliminates a whole class of bugs inherently.  
-
-##
+# Briefly
 
 ---
 
-# Functional Building Blocks
-
-* Purity
-* Higher Order Functions
+![fit](FuncNoState.png)
 
 ---
 
-# Purity
+![fit](FuncTitles.png)
 
-## f(x) = x + 1
-
+^ Purity: f(x) = x + 1
 ^ Output is calculated soley on its inputs
 ^ Repeatable
 ^ No Side Effects
 ^ Immutable Data
 
----
-
-# Higher Order Functions
-
-## Input or Output is a Function
-
+^ Higher Order Functions: Input or Output is a Function
 ^ map, reduce, filter, concat, take ...
 
 ---
 
-# Describe Reactive Cocoa Pipeline
-
-## Event Stream
+# Signals and Pipelines
 
 ---
 
-# So you have Signals/Event Streams.  Now what?  
-
-## Subscribing, Error Handling etc.
+![fit](TransitDashboardPipelines.png)
 
 ---
 
-# Things get interesting when you combine signals
+# Transit Dashboard Pipelines/Signals
+
+* Input: List of Everyday Trips (Favourites)
+* Input: GPS Location
+* Input: Time
+* Output: Next Transit Trip
+
+^ It's all about Inputs and Outputs
 
 ---
 
-
-# Everyday Transit Pipeline
+# Pipelines ==
+# RACSignals
 
 ---
 
-# RACify your existing (Obj-c Code)
+# So we have Pipelines/Signals.  Now what?
+
+---
+
+# Code Example: Subscribing, Error Handling etc.
+
+---
+
+# *RAC* Lessons Learned
+
+---
+
+# *RAC* Lessons Learned
+
+1. RACify your existing (obj-c) Code
+2. RACSignal things
 
 ---
 
 # KVO
 
-## This is worth the dependency
+^ This is worth the dependency
+
+---
+
+# No, Seriously ...  KVO!
+
+^ This is worth the dependency
+
+---
+
+# Key Value Observing
+
+```objectivec
+
+// Bind Transit Trips to Table View
+[RACObserve(self.viewModel, everydayTransitTrips) subscribeNext:^(id x) {
+    @strongify(self);
+
+    // Refresh 'Transit Trips' MCSimpleTableSection if needed
+    ...
+
+    [self.tableView reloadData];
+}];
+
+```
 
 ---
 
@@ -103,18 +127,15 @@
 
 ---
 
-# Handle events, notifications etc.
-
-
----
-
-# ReactiveCocoa Lessons Learned
+# Code Example: Lift Selector thing.
 
 ---
 
-# Lesson # 1 - Learn More about Funtional Programming
+# Create Signals of Events, Notifications, Reachability etc.
 
-^ Immutable Objects are good,
+---
+
+# Signal
 
 ---
 
@@ -125,6 +146,8 @@
 ---
 
 # Reactive Timer #2
+
+## Empty Signal with a delay.  
 
 ---
 
