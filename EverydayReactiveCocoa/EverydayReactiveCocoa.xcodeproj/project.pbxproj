@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		54A61F06642B462392C63FE6 /* libPods-EverydayReactiveCocoaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 994873D25E2F47499348DD42 /* libPods-EverydayReactiveCocoaTests.a */; };
+		6834AD7319B05498007951FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6834AD7219B05498007951FE /* CoreLocation.framework */; };
 		68B84E5118E837B7008C5775 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B84E5018E837B7008C5775 /* Foundation.framework */; };
 		68B84E5318E837B7008C5775 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B84E5218E837B7008C5775 /* CoreGraphics.framework */; };
 		68B84E5518E837B7008C5775 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B84E5418E837B7008C5775 /* UIKit.framework */; };
@@ -23,6 +24,14 @@
 		68B84E7A18E837B7008C5775 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B84E7818E837B7008C5775 /* InfoPlist.strings */; };
 		68B84E7C18E837B7008C5775 /* EverydayReactiveCocoaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B84E7B18E837B7008C5775 /* EverydayReactiveCocoaTests.m */; };
 		88091FAEE60E474E8707693A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1481EF6C5F64167B37FCC14 /* libPods.a */; };
+		AD338230B35F60F538427642 /* MPXEverydayTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = AD33832219E28C1A54DF5B49 /* MPXEverydayTrip.m */; };
+		AD3382D04A87ABCCA381B9D3 /* MPXEverydayTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = AD33832219E28C1A54DF5B49 /* MPXEverydayTrip.m */; };
+		AD3382F93E2AB5C57A54F4E7 /* MPXLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD33891B0781ADE564F0BE08 /* MPXLocationService.m */; };
+		AD338559D2C06F21F7CC163F /* MPXSettingsService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD33857060906515A4667444 /* MPXSettingsService.m */; };
+		AD3387800C0C54BDE5937515 /* MPXViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD33857F1E5E5CF4C3FF657E /* MPXViewModel.m */; };
+		AD3387D57C7CAE5612050A59 /* MPXSettingsService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD33857060906515A4667444 /* MPXSettingsService.m */; };
+		AD338DA8CA657A6AE0CA18F2 /* MPXLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD33891B0781ADE564F0BE08 /* MPXLocationService.m */; };
+		AD338F4F3EE3D84802D12AE1 /* MPXViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD33857F1E5E5CF4C3FF657E /* MPXViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		491BF88B7E314E6F8C680784 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		6834AD7219B05498007951FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6863EC1367504B0A81C8B98F /* Pods-EverydayReactiveCocoaTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EverydayReactiveCocoaTests.xcconfig"; path = "Pods/Pods-EverydayReactiveCocoaTests.xcconfig"; sourceTree = "<group>"; };
 		68B84E4D18E837B7008C5775 /* EverydayReactiveCocoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EverydayReactiveCocoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B84E5018E837B7008C5775 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,6 +69,14 @@
 		68B84E7B18E837B7008C5775 /* EverydayReactiveCocoaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverydayReactiveCocoaTests.m; sourceTree = "<group>"; };
 		994873D25E2F47499348DD42 /* libPods-EverydayReactiveCocoaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EverydayReactiveCocoaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1481EF6C5F64167B37FCC14 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD3382A5E9CAB8072657ABA5 /* MPXViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPXViewModel.h; sourceTree = "<group>"; };
+		AD33832219E28C1A54DF5B49 /* MPXEverydayTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPXEverydayTrip.m; sourceTree = "<group>"; };
+		AD33857060906515A4667444 /* MPXSettingsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPXSettingsService.m; sourceTree = "<group>"; };
+		AD33857F1E5E5CF4C3FF657E /* MPXViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPXViewModel.m; sourceTree = "<group>"; };
+		AD3386FC8C9CADC26B64009C /* MPXSettingsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPXSettingsService.h; sourceTree = "<group>"; };
+		AD33891B0781ADE564F0BE08 /* MPXLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPXLocationService.m; sourceTree = "<group>"; };
+		AD338BF18960E870D5F5915C /* MPXEverydayTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPXEverydayTrip.h; sourceTree = "<group>"; };
+		AD338C825DE62CEBDB21A518 /* MPXLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPXLocationService.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6834AD7319B05498007951FE /* CoreLocation.framework in Frameworks */,
 				68B84E5318E837B7008C5775 /* CoreGraphics.framework in Frameworks */,
 				68B84E5518E837B7008C5775 /* UIKit.framework in Frameworks */,
 				68B84E5118E837B7008C5775 /* Foundation.framework in Frameworks */,
@@ -111,6 +130,7 @@
 		68B84E4F18E837B7008C5775 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6834AD7219B05498007951FE /* CoreLocation.framework */,
 				68B84E5018E837B7008C5775 /* Foundation.framework */,
 				68B84E5218E837B7008C5775 /* CoreGraphics.framework */,
 				68B84E5418E837B7008C5775 /* UIKit.framework */,
@@ -131,6 +151,14 @@
 				68B84E6618E837B7008C5775 /* MPXViewController.m */,
 				68B84E6818E837B7008C5775 /* Images.xcassets */,
 				68B84E5718E837B7008C5775 /* Supporting Files */,
+				AD33857F1E5E5CF4C3FF657E /* MPXViewModel.m */,
+				AD3382A5E9CAB8072657ABA5 /* MPXViewModel.h */,
+				AD33891B0781ADE564F0BE08 /* MPXLocationService.m */,
+				AD338C825DE62CEBDB21A518 /* MPXLocationService.h */,
+				AD33857060906515A4667444 /* MPXSettingsService.m */,
+				AD3386FC8C9CADC26B64009C /* MPXSettingsService.h */,
+				AD33832219E28C1A54DF5B49 /* MPXEverydayTrip.m */,
+				AD338BF18960E870D5F5915C /* MPXEverydayTrip.h */,
 			);
 			path = EverydayReactiveCocoa;
 			sourceTree = "<group>";
@@ -232,8 +260,6 @@
 			mainGroup = 68B84E4418E837B7008C5775;
 			productRefGroup = 68B84E4E18E837B7008C5775 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				68B84E4C18E837B7008C5775 /* EverydayReactiveCocoa */,
@@ -334,6 +360,10 @@
 				68B84E6118E837B7008C5775 /* MPXAppDelegate.m in Sources */,
 				68B84E5D18E837B7008C5775 /* main.m in Sources */,
 				68B84E6718E837B7008C5775 /* MPXViewController.m in Sources */,
+				AD338F4F3EE3D84802D12AE1 /* MPXViewModel.m in Sources */,
+				AD338DA8CA657A6AE0CA18F2 /* MPXLocationService.m in Sources */,
+				AD3387D57C7CAE5612050A59 /* MPXSettingsService.m in Sources */,
+				AD3382D04A87ABCCA381B9D3 /* MPXEverydayTrip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +372,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				68B84E7C18E837B7008C5775 /* EverydayReactiveCocoaTests.m in Sources */,
+				AD3387800C0C54BDE5937515 /* MPXViewModel.m in Sources */,
+				AD3382F93E2AB5C57A54F4E7 /* MPXLocationService.m in Sources */,
+				AD338559D2C06F21F7CC163F /* MPXSettingsService.m in Sources */,
+				AD338230B35F60F538427642 /* MPXEverydayTrip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +576,7 @@
 				68B84E8118E837B7008C5775 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68B84E8218E837B7008C5775 /* Build configuration list for PBXNativeTarget "EverydayReactiveCocoaTests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +585,7 @@
 				68B84E8418E837B7008C5775 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

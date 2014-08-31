@@ -1,11 +1,12 @@
 platform :ios, '7.0'
 
 pod 'ReactiveCocoa'
+pod 'NSDate+Calendar'
 
 # Add Kiwi as an exclusive dependency for the App Tests target
 target :EverydayReactiveCocoaTests, :exclusive => true do
 
-pod 'Kiwi/XCTest'
+pod 'Specta'
 pod 'Expecta'
 
 end

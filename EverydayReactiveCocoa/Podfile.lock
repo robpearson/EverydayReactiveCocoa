@@ -1,25 +1,25 @@
 PODS:
-  - Expecta (0.3.0)
-  - Kiwi/ARC (2.2.4)
-  - Kiwi/NonARC (2.2.4)
-  - Kiwi/XCTest (2.2.4):
-    - Kiwi/ARC
-    - Kiwi/NonARC
-  - ReactiveCocoa (2.3):
+  - Expecta (0.3.1)
+  - NSDate+Calendar (0.0.4)
+  - ReactiveCocoa (2.3.1):
+    - ReactiveCocoa/UI
+  - ReactiveCocoa/Core (2.3.1):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.3.1)
+  - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.3):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.3)
+  - Specta (0.2.1)
 
 DEPENDENCIES:
   - Expecta
-  - Kiwi/XCTest
+  - NSDate+Calendar
   - ReactiveCocoa
+  - Specta
 
 SPEC CHECKSUMS:
-  Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
-  Kiwi: d60d7498b640a16f58b01925fc3c8d7c4d809f66
-  ReactiveCocoa: 1f6265f9d521923d3efcc37b00722cefc16df269
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  NSDate+Calendar: d1e6f7298a9f95f3e0bb999acc445aee282e6769
+  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.33.1
