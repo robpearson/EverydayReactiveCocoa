@@ -5,9 +5,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class MPXLocationService;
+@class MPXSettingsService;
+
 
 @interface MPXViewModel : NSObject
 
 
+- (instancetype)init;
 
+- (instancetype)initWithLocationService:(MPXLocationService *)locationService settingsService:(MPXSettingsService *)settingsService;
 @end

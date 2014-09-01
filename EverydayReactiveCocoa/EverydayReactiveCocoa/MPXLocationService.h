@@ -7,7 +7,7 @@
 
 @class RACSignal;
 
-@interface MPXLocationService : NSObject
+@interface MPXLocationService : NSObject<CLLocationManagerDelegate>
 
 + (MPXLocationService *)sharedInstance;
 

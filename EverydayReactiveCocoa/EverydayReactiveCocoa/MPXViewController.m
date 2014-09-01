@@ -6,9 +6,13 @@
 //  Copyright (c) 2014 Rob Pearson. All rights reserved.
 //
 
+#import "ReactiveCocoa.h"
 #import "MPXViewController.h"
+#import "MPXViewModel.h"
 
 @interface MPXViewController ()
+
+@property (nonatomic, strong) MPXViewModel *viewModel;
 
 @end
 
@@ -17,13 +21,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    self.viewModel = [[MPXViewModel alloc] init];
+
+    [self bindSignals];
+
+}
+
+- (void)bindSignals {
+
+//    RACObserve(self, viewModel.something)
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 @end

@@ -18,9 +18,9 @@
 + (MPXLocationService *)sharedInstance {
 
     static MPXLocationService *sharedLocationService;
-    static dispatch_once_t pred;
+    static dispatch_once_t predicate;
 
-    dispatch_once(&pred, ^{
+    dispatch_once(&predicate, ^{
         sharedLocationService = [[MPXLocationService alloc] init];
     });
 

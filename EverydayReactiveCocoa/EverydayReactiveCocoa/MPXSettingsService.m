@@ -51,6 +51,8 @@
                                             arrivingLocation:[[CLLocation alloc] initWithLatitude:-27.320967 longitude:153.011308]]];
 
 
+        [subscriber sendCompleted];
+
         return nil;
     }];
 
