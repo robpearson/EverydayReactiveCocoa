@@ -2,6 +2,7 @@ platform :ios, '7.0'
 
 pod 'ReactiveCocoa'
 pod 'NSDate+Calendar'
+pod 'DateTools'
 pod 'CocoaLumberjack'
 
 # Add Kiwi as an exclusive dependency for the App Tests target

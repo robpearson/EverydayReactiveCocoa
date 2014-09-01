@@ -8,6 +8,7 @@ PODS:
   - CocoaLumberjack/Core (2.0.0-beta)
   - CocoaLumberjack/Extensions (2.0.0-beta):
     - CocoaLumberjack/Core
+  - DateTools (1.3.0)
   - Expecta (0.3.1)
   - NSDate+Calendar (0.0.4)
   - ReactiveCocoa (2.3.1):
@@ -21,6 +22,7 @@ PODS:
 
 DEPENDENCIES:
   - CocoaLumberjack
+  - DateTools
   - Expecta
   - NSDate+Calendar
   - ReactiveCocoa
@@ -28,6 +30,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   CocoaLumberjack: aadc76d7bd6c839ca84b38ed50cbf89d7cf8c693
+  DateTools: aa3131160337433a152c0228a2a1be2ff4ed3e05
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   NSDate+Calendar: d1e6f7298a9f95f3e0bb999acc445aee282e6769
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462

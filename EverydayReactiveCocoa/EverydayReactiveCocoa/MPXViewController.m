@@ -12,14 +12,13 @@
 
 @interface MPXViewController ()
 
-@property (nonatomic, strong) MPXViewModel *viewModel;
+@property(nonatomic, strong) MPXViewModel *viewModel;
 
 @end
 
 @implementation MPXViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     self.viewModel = [[MPXViewModel alloc] init];
@@ -30,12 +29,11 @@
 
 - (void)bindSignals {
 
-//    RACObserve(self, viewModel.something)
+    RAC(self, nextTransitTripDetail.text) = RACObserve(self, viewModel.nextTripString);
 
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
 }

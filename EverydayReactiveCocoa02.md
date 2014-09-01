@@ -203,12 +203,12 @@ RACSignal *appActiveSignal = [[[[NSNotificationCenter.defaultCenter
             map:^id(NSDate *timestamp) {
                 @strongify(self);
 
-                if (self.hasEverydayTrips != nil && [@(YES) isEqualToNumber:self.hasEverydayTrips]) {
-                    return @"SEQ";
-                }
-                else {
-                    return @"Everyday Transit";
-                }
+                  if (self.hasEverydayTrips != nil && [@(YES) isEqualToNumber:self.hasEverydayTrips]) {
+                      return @"SEQ";
+                  }
+                  else {
+                      return @"Everyday Transit";
+                  }
             }]
             startWith:@"Everyday Transit"]
             distinctUntilChanged]
