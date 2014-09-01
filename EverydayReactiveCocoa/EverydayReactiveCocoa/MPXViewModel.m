@@ -125,7 +125,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                 // Get Next Time
                 NSDate *minDate = [[everydayTrip.departingTimes.rac_sequence filter:^BOOL(NSDate *departingTime) {
 
-                    return timestamp <= departingTime;
+                    return [timestamp isEarlierThan: departingTime];
 
                 }] foldLeftWithStart:[NSDate distantFuture] reduce:^id(NSDate *accumulator, NSDate *newDate) {
 
