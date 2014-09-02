@@ -31,6 +31,24 @@
 
     RAC(self, nextTransitTripDetail.text) = RACObserve(self, viewModel.nextTripString);
 
+    RACSignal *testSignal = nil;
+
+    [testSignal subscribeNext:^(id x) {
+
+                // React to event stream
+
+            }
+                        error:^(NSError *error) {
+
+                            // Handle Error
+
+                        }
+                    completed:^{
+
+                        //
+
+                    }];
+
 }
 
 - (void)didReceiveMemoryWarning {
