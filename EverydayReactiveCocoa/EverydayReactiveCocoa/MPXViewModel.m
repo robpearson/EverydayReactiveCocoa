@@ -63,15 +63,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)bindSignals {
 
-    @weakify(self);
-
     DDLogDebug(@"MPXViewModel binding signals");
-
-//    RACSignal *refreshDelaySignal = [[RACSignal empty] delay:60];
-//    RACSignal *refreshSignal = [[[self.locationService.locationSignal
-//            take:1]
-//            concat:refreshDelaySignal]
-//            repeat];
 
     RACSignal *refreshSignal = [[RACSignal interval:15 onScheduler:[RACScheduler scheduler]] startWith:[NSDate date]];
     RACSignal *everydayTripsSignal = [self.settingsService.everydayTripsSignal collect];
@@ -89,7 +81,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                 return [[everydayTrips.rac_sequence map:^id(MPXEverydayTrip *everydayTrip) {
 
                     CLLocationDistance tmpDistance = [everydayTrip.departingLocation distanceFromLocation:currentUserLocation];
-                    DDLogDebug(@"Everyday Trip w/ Departing Stop:%@ Arriving Stop:%@ Departing Stop Distance:%f", everydayTrip.departingLocationName, everydayTrip.arrivingLocationName, tmpDistance);
+                    DDLogDebug(@"Mapping Everyday Trip w/ Departing Stop:%@ Arriving Stop:%@ Departing Stop Distance:%f", everydayTrip.departingLocationName, everydayTrip.arrivingLocationName, tmpDistance);
                     RACTuple *tuple = [RACTuple tupleWithObjects:@(tmpDistance), timestamp, everydayTrip, nil];
                     return tuple;
 
@@ -98,40 +90,56 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             }]
             map:^id(NSArray *unsortedEverydayTrips) {
 
+                DDLogDebug(@"Mapping unsorted trips");
+
                 NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"first" ascending:YES];
                 NSArray *prioritisedTrips = [unsortedEverydayTrips sortedArrayUsingDescriptors:@[sortDescriptor]];
+
+                [prioritisedTrips enumerateObjectsUsingBlock:^(RACTuple *tripDistanceTimestampAndTripDetail, NSUInteger idx, BOOL *stop) {
+                    NSNumber *tmpDistance = tripDistanceTimestampAndTripDetail.first;
+                    MPXEverydayTrip *everydayTrip = tripDistanceTimestampAndTripDetail.third;
+                    DDLogDebug(@"Prioritised Trip w/ Departing Stop:%@ Arriving Stop:%@ Departing Stop Distance:%f", everydayTrip.departingLocationName, everydayTrip.arrivingLocationName, [tmpDistance doubleValue]);
+                }];
+
                 return prioritisedTrips;
 
             }]
             flattenMap:^RACStream *(NSArray *prioritisedEverydayTrips) {
 
-                // Dave: Any advice on how to do this better.
+                DDLogDebug(@"Mapping and flattening to get the next trip");
 
                 NSArray *topPriorityEverydayTrip = [[NSArray alloc] init];
                 if (prioritisedEverydayTrips.count > 0) {
-                    topPriorityEverydayTrip = @[prioritisedEverydayTrips.firstObject];
+                    RACTuple *nextTripDistanceTimestampAndTripDetail = prioritisedEverydayTrips.firstObject;
+                    NSNumber *tmpDistance = nextTripDistanceTimestampAndTripDetail.first;
+                    MPXEverydayTrip *everydayTrip = nextTripDistanceTimestampAndTripDetail.third;
+                    topPriorityEverydayTrip = @[nextTripDistanceTimestampAndTripDetail];
+                    DDLogDebug(@"Next Trip w/ Departing Stop:%@ Arriving Stop:%@ Departing Stop Distance:%f", everydayTrip.departingLocationName, everydayTrip.arrivingLocationName, [tmpDistance doubleValue]);
                 }
+
+                // Dave: Any advice on how to do this better.
 
                 RACSequence *tmpSequence = [topPriorityEverydayTrip rac_sequence];
                 RACSignal *prioritisedEverydayTripsSignal = [tmpSequence signalWithScheduler:[RACScheduler scheduler]];
                 return prioritisedEverydayTripsSignal;
 
             }]
-            map:^id(RACTuple *data) {
+            map:^id(RACTuple *nextTripTimestampAndTripDetail) {
 
-                NSDate *timestamp = data.second;
-                MPXEverydayTrip *everydayTrip = data.third;
+                DDLogDebug(@"Mapping next trip to next trip string");
 
-                // Get Next Time
-                NSDate *minDate = [[everydayTrip.departingTimes.rac_sequence filter:^BOOL(NSDate *departingTime) {
+                NSDate *timestamp = nextTripTimestampAndTripDetail.second;
+                MPXEverydayTrip *everydayTrip = nextTripTimestampAndTripDetail.third;
 
-                    return [timestamp isEarlierThan: departingTime];
+                NSDate *nextTripDateTime = [[everydayTrip.departingTimes.rac_sequence filter:^BOOL(NSDate *departingTime) {
+
+                    return timestamp <= departingTime;
 
                 }] foldLeftWithStart:[NSDate distantFuture] reduce:^id(NSDate *accumulator, NSDate *newDate) {
 
                     NSDate *minDate = accumulator;
 
-                    if ([newDate isEarlierThan: minDate]) {
+                    if ([newDate isEarlierThan:minDate]) {
                         minDate = newDate;
                     }
 
@@ -140,9 +148,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
                 }];
 
                 // And then Subtract
-                double minutes = [timestamp minutesEarlierThan:minDate];
+                double minutes = [timestamp minutesEarlierThan:nextTripDateTime];
 
-                NSString *nextTripString = [NSString stringWithFormat:@"%d minutes @ %@", (int)minutes, everydayTrip.departingLocationName];
+                NSString *nextTripString = [NSString stringWithFormat:@"%d minutes @ %@", (int) minutes, everydayTrip.departingLocationName];
 
                 DDLogInfo(nextTripString);
 
@@ -150,7 +158,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             }]
             deliverOn:RACScheduler.mainThreadScheduler];
 
-            RAC(self, nextTripString) = nextTripSignal;
+    RAC(self, nextTripString) = nextTripSignal;
 
 }
 
