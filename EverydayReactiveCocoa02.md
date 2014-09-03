@@ -53,6 +53,10 @@
 
 ---
 
+# Demo
+
+---
+
 ![fit](TransitDashboardPipelines.png)
 
 ---
@@ -100,7 +104,10 @@ Outputs:
 
 ---
 
-# Code Example: Subscribing, Error Handling etc.
+# Two Options
+
+### RAC(self, viewModel.something)
+### RACSignal subscribeNext: error: completed:
 
 ---
 
@@ -189,13 +196,13 @@ RACSignal *appActiveSignal = [[[[NSNotificationCenter.defaultCenter
 
 ---
 
-# Reactive Timer #1
+# Reactive Timer 1
 
 ## Map Time
 
 ---
 
-# Reactive Timer #1
+# Reactive Timer 1
 
 ```objectivec
 
@@ -218,11 +225,15 @@ RACSignal *appActiveSignal = [[[[NSNotificationCenter.defaultCenter
 
 ---
 
-# Reactive Timer #2
+# Reactive Timer 2
 
 ## Empty Signal with a delay.
 
 ---
+
+# Reactive Timer 2
+
+```objectivec
 
     RACSignal *nextTransitTripIntervalSignal = [RACSignal interval:1 onScheduler:[RACScheduler scheduler]];
     RACSignal *currentUserLocationRefreshDelay = [[RACSignal empty] delay:60];
@@ -230,6 +241,8 @@ RACSignal *appActiveSignal = [[[[NSNotificationCenter.defaultCenter
             take:1]
             concat:currentUserLocationRefreshDelay]
             repeat];
+
+```
 
 ---
 
@@ -241,16 +254,16 @@ RACSignal *appActiveSignal = [[[[NSNotificationCenter.defaultCenter
 
 * Start by reading IntroToRx.com
 * Start small and iterate.
+* Logging w/ Something like Cocoalumberjack
 * Asks questions by opening issues at http://github.com/ReactiveCocoa/
 
 ---
 
 # Challenges
 
-* ReactiveCocoa Doco
 * Thinking like a Functional Programmer
+* ReactiveCocoa Doco
 * Debugging
-* Unit Testing
 
 ---
 
